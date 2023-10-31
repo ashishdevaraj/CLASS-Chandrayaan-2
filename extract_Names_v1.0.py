@@ -1,3 +1,4 @@
+import sys
 import os
 import time
 from selenium import webdriver
@@ -12,15 +13,18 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 
 
-# Inputs
-USER = "REPLACE THIS WITH YOUR EMAIL ID"
+# Inputs for Initial setup
+path_to_driver = r"REPLACE THIS WITH FULL PATH TO BINARY FILE"  # Setting path to binary file
+USER = "REPLACE THIS WITH YOUR EMAIL ID/USERNAME"
 PASS = "REPLACE THIS WITH YOUR PASSWORD"
 
 
-
 #Specify the corner coordinates (diagonals only)
-Ulat,Blat = 46,44
-Llon,Rlon = 26,28
+print('Please provide coordinates (-180 to 180 degrees system) of the region of interest as prompted:')
+Ulat = float(input('North Latitude: '))
+Blat = float(input('South Latitude: '))
+Llon = float(input('West Longitude: '))
+Rlon = float(input('East Longitude: '))
 
 lat_UL= lat_UR = Ulat
 lat_BL= lat_BR = Blat
@@ -104,7 +108,7 @@ profile.set_preference('browser.download.manager.showWhenStarting', False)
 profile.set_preference("browser.download.manager.showAlertOnComplete", False)
 profile.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/zip")
 
-service = Service(r'geckodriver')
+service = Service(path_to_driver)
 driver = webdriver.Firefox(service=service, options=profile)
 driver.maximize_window()
 driver.get("https://pradan.issdc.gov.in/ch2/")

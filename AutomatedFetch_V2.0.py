@@ -82,7 +82,7 @@ try:
     # Selecting the section for CLASS on the website
     time.sleep(10)
     CLASS_data = WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.ID, "tableForm:payloads:0:j_idt49"))
+        EC.presence_of_element_located((By.ID, "tableForm:payloads:0:j_idt44"))
     )
     CLASS_data.click()
 
@@ -122,7 +122,7 @@ try:
         
         # Downloading the batch
         time.sleep(40)
-        Download = WebDriverWait(driver, 20).until(
+        Download = WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.ID, "tableForm:download")))
         Download.click()
 
